@@ -1,0 +1,10 @@
+{
+    "name": "racinee/php-heritage",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src"
+        }
+    },
+    "require": {}
+}
