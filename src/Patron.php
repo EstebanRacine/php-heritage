@@ -5,7 +5,7 @@ namespace App;
 class Patron extends Employe
 //La classe Patron hérite de la classe Employe
 {
-    private string $voiture;
+    protected string $voiture;
 
     /**
      * @param string $voiture
