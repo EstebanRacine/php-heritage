@@ -52,9 +52,24 @@ class Entreprise
      * @return void
      */
     public function ajouterEmploye(Employe $employe):void{
-        if(!in_array($employe, $this->employes)){
-            $this->employes[] = $employe;
+        if($employe instanceof Patron){
+            if ($this->getPatron() != null){
+                return;
+            }
         }
+
+//        if(!in_array($employe, $this->employes)){
+            $this->employes[] = $employe;
+//        }
+    }
+
+    public function getPatron(): ?Patron{
+        foreach ($this->employes as $employe){
+            if ($employe instanceof Patron){
+                return $employe;
+            }
+        }
+        return null;
     }
 
     public function presentationsEmployes():void{
