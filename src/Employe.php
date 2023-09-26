@@ -45,6 +45,6 @@ class Employe
     }
 
     public  function presentation():string{
-        return "Je m'appelle $this->prenom $this->nom et j'ai $this->age ans.".PHP_EOL;
+        return "Je m'appelle $this->prenom $this->nom et j'ai $this->age ans.";
     }
 }

@@ -19,7 +19,7 @@ class Patron extends Employe
 
     public function presentation(): string
     {
-        return "Bonjour, je me nomme $this->prenom $this->nom  et JE suis le BOSS !!!".PHP_EOL;
+        return "Bonjour, je me nomme $this->prenom $this->nom et JE suis le BOSS !!!";
     }
 
     /**
