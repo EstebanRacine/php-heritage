@@ -2,6 +2,8 @@
 
 namespace App;
 
+use League\Csv\Reader;
+
 class Entreprise
 {
     protected string $nom;
@@ -51,10 +53,24 @@ class Entreprise
      * @param Employe $employe
      * @return void
      */
-    public function ajouterEmploye(Employe $employe):void{
-        if(!in_array($employe, $this->employes)){
-            $this->employes[] = $employe;
+    public function ajouterEmploye(Employe $employe):bool{
+        if($employe instanceof Patron){
+            if ($this->getPatron() != null){
+                return 0;
+            }
         }
+
+        $this->employes[] = $employe;
+        return 1;
+    }
+
+    public function getPatron(): ?Patron{
+        foreach ($this->employes as $employe){
+            if ($employe instanceof Patron){
+                return $employe;
+            }
+        }
+        return null;
     }
 
     public function presentationsEmployes():void{
@@ -63,5 +79,38 @@ class Entreprise
         }
     }
 
+    /**
+     * @return array
+     */
+    public function getListeEmployes():array{
+        $results = [
+        ];
+        foreach ($this->employes as $employe){
+            $reflexion = new \ReflectionClass($employe);
+            $results[$reflexion->getShortName()][] = $employe;
+        }
+        return $results;
+    }
+
+    public function insertCSV(){
+        $csv = Reader::createFromPath('csv/Effectif.csv', 'r');
+        $csv->setHeaderOffset(0);
+        $csv->setDelimiter(';');
+        $records = $csv->getRecords();
+        foreach ($records as $record){
+            switch ($record["Categorie"]){
+                case "P":
+                    $employe = new Patron($record["Prenom"], $record["Nom"], $record["Age"], $record["Voiture"]);
+                    break;
+                case "C":
+                    $employe = new ChefService($record["Prenom"], $record["Nom"], $record["Age"], $record["Service"]);
+                    break;
+                default:
+                    $employe = new Employe($record["Prenom"], $record["Nom"], $record["Age"]);
+                    break;
+            }
+            $this->employes[] = $employe;
+        }
+    }
 
 }
