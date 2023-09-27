@@ -10,7 +10,7 @@ class Entreprise
     protected string $ville;
 
     /**
-     * @var Employe[]
+     * @var Personnel[]
      */
     protected array $employes;
 
@@ -50,10 +50,10 @@ class Entreprise
     }
 
     /**
-     * @param Employe $employe
+     * @param Personnel $employe
      * @return void
      */
-    public function ajouterEmploye(Employe $employe):bool{
+    public function ajouterEmploye(Personnel $employe):bool{
         if($employe instanceof Patron){
             if ($this->getPatron() != null){
                 return 0;

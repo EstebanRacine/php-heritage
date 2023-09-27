@@ -2,7 +2,7 @@
 
 namespace App;
 
-class ChefService extends Employe
+class ChefService extends Personnel
 {
     protected string $service;
 
@@ -20,10 +20,9 @@ class ChefService extends Employe
         return $this->service;
     }
 
-
-
     public function presentation(): string
     {
         return "Bonjour, je suis $this->prenom $this->nom, j'ai $this->age ans et je suis le chef du $this->service.";
     }
+
 }

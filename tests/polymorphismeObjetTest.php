@@ -1,12 +1,12 @@
 <?php
 require "vendor/autoload.php";
 /**
- * @param \App\Employe $employe
+ * @param \App\Personnel $employe
  * @return void
  */
-function test(\App\Employe $employe):void{
-    if($employe instanceof \App\Employe){
-        echo "{$employe->getPrenom()} est de type Employe".PHP_EOL;
+function test(\App\Personnel $employe):void{
+    if($employe instanceof \App\Personnel){
+        echo "{$employe->getPrenom()} est de type Personnel".PHP_EOL;
     }
     if($employe instanceof \App\Patron){
         echo "{$employe->getPrenom()} est de type Patron".PHP_EOL;
@@ -16,7 +16,7 @@ function test(\App\Employe $employe):void{
     }
 }
 
-$emp1 = new \App\Employe("Alain", "Delon", "87");
+$emp1 = new \App\Personnel("Alain", "Delon", "87");
 $emp2 = new \App\Patron("Ginette", "Pahinkaflou", "60", "Renault 4L");
 $emp3 = new \App\ChefService("Louis", "Palodora", "26", "Service Informatique");
 test($emp1);

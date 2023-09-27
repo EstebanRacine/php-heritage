@@ -2,8 +2,8 @@
 
 namespace App;
 
-class Patron extends Employe
-//La classe Patron hérite de la classe Employe
+class Patron extends Personnel
+//La classe Patron hérite de la classe Personnel
 {
     protected string $voiture;
 
