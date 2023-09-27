@@ -133,7 +133,27 @@ class Entreprise
     }
 
     public function calculerSalaireMoyen():float{
+        if (count($this->employes) < 1 ){
+            return 0;
+        }
         return $this->calculerMasseSalariale()/count($this->employes);
+    }
+
+    public function personnelMeilleurePaieParType(string $type) : ?Personnel {
+        $listeEmploye = $this->getListeEmployes();
+
+        if (count($listeEmploye[$type]) < 1 ){
+            return null;
+        }
+
+        $employe = $listeEmploye[$type][0];
+
+        foreach ($listeEmploye[$type] as $personnel){
+            if($personnel->calculerSalaire() > $employe->calculerSalaire()){
+                $employe = $personnel;
+            }
+        }
+        return $employe;
     }
 
 }

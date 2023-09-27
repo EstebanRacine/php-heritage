@@ -74,4 +74,5 @@ dump($entrepriseBis->calculerSalaires());
 echo PHP_EOL.PHP_EOL.PHP_EOL;
 echo "La masse salariale est de {$entrepriseBis->calculerMasseSalariale()}€".PHP_EOL;
 echo "Le salaire moyen est de {$entrepriseBis->calculerSalaireMoyen()}€".PHP_EOL;
+dump($entrepriseBis->personnelMeilleurePaieParType("ChefService"));
 
