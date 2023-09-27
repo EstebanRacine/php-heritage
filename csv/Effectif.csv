@@ -1,6 +1,6 @@
-Categorie;Prenom;Nom;Age;Voiture;Service
-P;Josh;Test;90;Clio IV;
-C;Louis;Palodora;26;;Pole Senteur
-C;Gerard;Remenvussa;49;;Pole Maintenance
-E;Alain;Tairieure;48;;
-E;Bastien;Moalamin;24;;
+Categorie;Prenom;Nom;Age;Salaire;Voiture;Service;Bonus
+P;Josh;Test;90;2600;Clio IV;;1000
+C;Louis;Palodora;26;2000;;Pole Senteur;
+C;Gerard;Remenvussa;49;2100;;Pole Maintenance;
+E;Alain;Tairieure;48;1600;;;
+E;Bastien;Moalamin;24;750;;;

@@ -6,11 +6,11 @@ require "vendor/autoload.php";
 //////////////////////////////////////////
 
 $entreprise = new \App\Entreprise("ABCDEntreprise", "Besançon");
-$emp1 = new \App\Employe("Alain", "Tairieure", "48");
-$emp2 = new \App\Patron("Ginette", "Pakaflou", "60", "Renault 4L");
-$emp3 = new \App\ChefService("Louis", "Palodora", "26", "Pôle Senteur");
-$emp4 = new \App\Patron("Josh", "Test", 90, "Clio IV");
-$emp5 = new \App\Employe("Bastien", "Moalamin", "24");
+$emp1 = new \App\Employe("Alain", "Tairieure", "48", 750);
+$emp2 = new \App\Patron("Ginette", "Pakaflou", "60",2800, "Renault 4L", 750);
+$emp3 = new \App\ChefService("Louis", "Palodora", "26", 2000, "Pôle Senteur");
+$emp4 = new \App\Patron("Josh", "Test", 90, 2800, "Clio IV", 250);
+$emp5 = new \App\Employe("Bastien", "Moalamin", "24", 1400);
 
 //////////////////////////////////////////
 //Présentations + recherche patron (sans)
@@ -63,3 +63,15 @@ echo PHP_EOL.PHP_EOL.PHP_EOL;
 $entrepriseBis = new \App\Entreprise("EntrepriseBis", "Paris");
 $entrepriseBis->insertCSV();
 dump($entrepriseBis->getListeEmployes());
+
+//////////////////////////////////////////
+/// Test salaires
+/// //////////////////////////////////////////
+
+echo PHP_EOL.PHP_EOL.PHP_EOL;
+dump($entrepriseBis->calculerSalaires());
+
+echo PHP_EOL.PHP_EOL.PHP_EOL;
+echo "La masse salariale est de {$entrepriseBis->calculerMasseSalariale()}€".PHP_EOL;
+echo "Le salaire moyen est de {$entrepriseBis->calculerSalaireMoyen()}€".PHP_EOL;
+

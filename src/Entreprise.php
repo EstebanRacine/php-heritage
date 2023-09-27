@@ -100,17 +100,40 @@ class Entreprise
         foreach ($records as $record){
             switch ($record["Categorie"]){
                 case "P":
-                    $employe = new Patron($record["Prenom"], $record["Nom"], $record["Age"], $record["Voiture"]);
+                    $employe = new Patron($record["Prenom"], $record["Nom"], $record["Age"], $record["Salaire"], $record["Voiture"], $record["Bonus"]);
                     break;
                 case "C":
-                    $employe = new ChefService($record["Prenom"], $record["Nom"], $record["Age"], $record["Service"]);
+                    $employe = new ChefService($record["Prenom"], $record["Nom"], $record["Age"], $record["Salaire"], $record["Service"]);
                     break;
                 default:
-                    $employe = new Employe($record["Prenom"], $record["Nom"], $record["Age"]);
+                    $employe = new Employe($record["Prenom"], $record["Nom"], $record["Age"], $record["Salaire"]);
                     break;
             }
             $this->employes[] = $employe;
         }
+    }
+
+    public function calculerSalaires():array{
+        $results = [];
+        foreach ($this->employes as $employe){
+            $results[] = [
+                "Salarié" => $employe->getPrenom()." ".$employe->getNom(),
+                "Salaire" => $employe->calculerSalaire()
+            ];
+        }
+        return $results;
+    }
+
+    public function calculerMasseSalariale():float{
+        $result = 0;
+        foreach ($this->employes as $employe){
+            $result += $employe->calculerSalaire();
+        }
+        return $result;
+    }
+
+    public function calculerSalaireMoyen():float{
+        return $this->calculerMasseSalariale()/count($this->employes);
     }
 
 }
